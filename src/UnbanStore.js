@@ -14,9 +14,30 @@ class UnbanStore {
     }
 
     addUserToUnban(roomId, userId) {
-        var users = this.getUsersToUnban(roomId)
-        users.push(userId);
-        this._store.setItem(roomId, JSON.stringify(users))
+        var users = this.getUsersToUnban(roomId);
+        if (users.indexOf(userId) === -1) {
+            users.push(userId);
+            this._store.setItem(roomId, JSON.stringify(users));
+        }
+
+        var rooms = this.getRooms();
+        if (rooms.indexOf(roomId) === -1) {
+            rooms.push(roomId);
+            this._store.setItem("room_list", JSON.stringify(rooms));
+        }
+    }
+
+    removeUserFromUnban(roomId, userId) {
+        var users = this.getUsersToUnban(roomId);
+        var idx = users.indexOf(userId);
+        if (idx !== -1) {
+            users.splice(idx, 1);
+            this._store.setItem(roomId, JSON.stringify(users));
+        }
+    }
+
+    getRooms() {
+        return JSON.parse(this._store.getItem("room_list") || "[]");
     }
 }
 
