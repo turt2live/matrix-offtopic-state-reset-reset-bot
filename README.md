@@ -1,2 +1,3 @@
-# matrix-offtopic-unban-bot
-A bot to save people from the offtopic state resets
+# matrix-offtopic-state-reset-reset
+
+Resets state resets in offtopic where it can.
