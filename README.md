@@ -1,3 +1,3 @@
 # matrix-offtopic-state-reset-reset
 
-Resets state resets in offtopic where it can.
+Resets state resets in rooms where it can. Written originally for #offtopic:matrix.org.
